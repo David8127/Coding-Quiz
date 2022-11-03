@@ -22,7 +22,16 @@ function questionPage() {/*  */
         Question 1
     </p>
     <ul>
-        <li><button>This option</button></li>
+        Which of the items in this array has an index value of 1? 
+    </ul>
+    <ul>
+        var westeros = ["Harrenhall", "Dragonstone", "Winterfell", "Lannisport", "Highgarden", "Yronwood"];
+    </ul>
+    <ul>
+        <li><button>Harrenhall</button></li>
+        <li><button>Winterfell</button></li>
+        <li><button>Dragonstone</button></li>
+        <li><button>Yronwood</button></li>
     </ul>
     
     `
