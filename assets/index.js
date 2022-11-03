@@ -1,4 +1,7 @@
 var quiz = document.getElementById("quiz");
+var initialTime = 60;
+var time = document.getElementById("time");
+
 function homePage () {
     quiz.innerHTML = `
     <p>
@@ -11,6 +14,7 @@ document
 .addEventListener(
     'click', 
     function () {
+        setTime()
         questionPage()
 })
 
@@ -37,4 +41,21 @@ function questionPage() {/*  */
     `
 }
 
-homePage()
+function timeChange () {
+    initialTime = initialTime - 15
+}
+
+function setTime() {
+    // Sets interval in variable
+    var timerInterval = setInterval(function() {
+      initialTime--;
+      time.textContent = initialTime;
+  
+      if(initialTime === 0) {
+        clearInterval(timerInterval);
+      }
+  
+    }, 1000);
+
+homePage() 
+}
