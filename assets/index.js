@@ -2,21 +2,21 @@ var quiz = document.getElementById("quiz");
 var initialTime = 60;
 var time = document.getElementById("time");
 
-function homePage () {
+function homePage() {
     quiz.innerHTML = `
     <p>
         My Quiz
     </p>
     <button id="startQuiz">Start Quiz</button>
     `
-document
-.getElementById('startQuiz')
-.addEventListener(
-    'click', 
-    function () {
-        setTime()
-        questionPage()
-})
+    document
+        .getElementById('startQuiz')
+        .addEventListener(
+            'click',
+            function () {
+                setTime()
+                questionPage()
+            })
 
 }
 
@@ -41,21 +41,32 @@ function questionPage() {/*  */
     `
 }
 
-function timeChange () {
+//document
+//.getelementByClassName('choice')
+//.addEventListener (
+'click',
+    function () {
+
+    }
+)
+
+//give ID for whichever is the correct answer this.value = choice, then say go to next question, then subtract from time. 
+
+function timeChange() {
     initialTime = initialTime - 15
 }
 
 function setTime() {
     // Sets interval in variable
-    var timerInterval = setInterval(function() {
-      initialTime--;
-      time.textContent = initialTime;
-  
-      if(initialTime === 0) {
-        clearInterval(timerInterval);
-      }
-  
-    }, 1000);
+    var timerInterval = setInterval(function () {
+        initialTime--;
+        timer.textContent = initialTime;
 
-homePage() 
+        if (initialTime === 0) {
+            clearInterval(timerInterval);
+        }
+
+    }, 1000);
 }
+homePage()
+
