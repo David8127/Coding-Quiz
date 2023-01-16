@@ -1,1 +1,16 @@
+body {
+    background-color: rgb(169, 255, 130);
+}
 
+header {
+    text-align: center;
+    padding: 2%;
+}
+
+.container {
+    margin: 10;
+}
+
+li {
+    padding: 2px 10px;
+}

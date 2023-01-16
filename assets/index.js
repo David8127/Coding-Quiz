@@ -4,7 +4,7 @@ var initialTime = 60;
 
 var questions = [
     {
-        title: 'Which of the items in this array has an index value of 1? <code>var westeros = ["Harrenhall", "Dragonstone", "Winterfell", "Lannisport", "Highgarden", "Yronwood"]</code>',
+        title: 'Which of the items in this array has an index value of 1?\n<code>var westeros = ["Harrenhall", "Dragonstone", "Winterfell", "Lannisport", "Highgarden", "Yronwood"]</code>',
         answers: [
             {
                 answer: 'Harrenhall',
@@ -110,8 +110,6 @@ var questions = [
     }
 ]
 
-
-
 var currentQuestion = 0;
 
 function homePage() {
@@ -127,13 +125,13 @@ function homePage() {
     </div>
     `
     document
-    .getElementById('startQuiz')
-    .addEventListener(
-        'click',
-        function () {
-            setTime()
-            questionPage(questions[currentQuestion])
-        })
+        .getElementById('startQuiz')
+        .addEventListener(
+            'click',
+            function () {
+                setTime()
+                questionPage(questions[currentQuestion])
+            })
 }
 
 function questionPage(question) {
@@ -153,87 +151,107 @@ function questionPage(question) {
     `
 
     document
-    .getElementById("answerOne")
-    .addEventListener(
-        'click',
-        function (event) {
-            if(event.currentTarget.dataset.correct === 'true') {
-                alert ('nice work')
-            }else{
-                alert('false')
-                timeChange()
+        .getElementById("answerOne")
+        .addEventListener(
+            'click',
+            function (event) {
+                if (event.currentTarget.dataset.correct === 'true') {
+                    alert('nice work')
+                } else {
+                    alert('false')
+                    timeChange()
+                }
+                currentQuestion++
+                if (questions.length === currentQuestion) {
+                    highScore()
+                }
+                questionPage(questions[currentQuestion])
             }
-            currentQuestion++
-            questionPage(questions[currentQuestion])
-        }
-    )
+        )
 
     document
-    .getElementById("answerTwo")
-    .addEventListener(
-        'click',
-        function (event) {
-            if(event.currentTarget.dataset.correct === 'true') {
-                alert ('nice work')
-            }else{
-                alert('false')
-                timeChange()
+        .getElementById("answerTwo")
+        .addEventListener(
+            'click',
+            function (event) {
+                if (event.currentTarget.dataset.correct === 'true') {
+                    alert('nice work')
+                } else {
+                    alert('false')
+                    timeChange()
+                }
+                currentQuestion++
+                if (questions.length === currentQuestion) {
+                    highScore()
+                }
+                questionPage(questions[currentQuestion])
             }
-            currentQuestion++
-            questionPage(questions[currentQuestion])
-        }
-    )
+        )
 
     document
-    .getElementById("answerThree")
-    .addEventListener(
-        'click',
-        function (event) {
-            if(event.currentTarget.dataset.correct === 'true') {
-                alert ('nice work')
-            }else{
-                alert('false')
-                timeChange()
+        .getElementById("answerThree")
+        .addEventListener(
+            'click',
+            function (event) {
+                if (event.currentTarget.dataset.correct === 'true') {
+                    alert('nice work')
+                } else {
+                    alert('false')
+                    timeChange()
+                }
+                currentQuestion++
+                if (questions.length === currentQuestion) {
+                    highScore()
+                }
+                questionPage(questions[currentQuestion])
             }
-            currentQuestion++
-            questionPage(questions[currentQuestion])
-        }
-    )
+        )
 
     document
-    .getElementById("answerFour")
-    .addEventListener(
-        'click',
-        function (event) {
-            if(event.currentTarget.dataset.correct === 'true') {
-                alert ('nice work')
-            }else{
-                alert('false')
-                timeChange()
+        .getElementById("answerFour")
+        .addEventListener(
+            'click',
+            function (event) {
+                if (event.currentTarget.dataset.correct === 'true') {
+                    alert('nice work')
+                } else {
+                    alert('false')
+                    timeChange()
+                }
+                currentQuestion++
+                if (questions.length === currentQuestion) {
+                    highScore()
+                }
+                questionPage(questions[currentQuestion])
             }
-            currentQuestion++
-            questionPage(questions[currentQuestion])
-        }
-    )
+        )
 
-}
-
-function timeChange() {
-    initialTime = initialTime - 10
 }
 
 function highScore() {
     quiz.innerHTML = /*html*/ `
     <header>
-        <h1></h1>
+        <h1>Record your score!</h1>
     </header>
     <div class="container">
-        <div>
-            <h2>Ready to test your JavaScript skills?</h2>
-        </div>
-        <button id="startQuiz">Start Quiz!</button>
+        <form name="myForm" action="/action_page.php" method="GET">
+        <label for="initials">Your Initials:</label>
+        <input type="text" id="initials" name="initials"><br><br>
+        <label for="score">Score (out of 5):</label>
+        <input type="text" id="score" name="score" value=""><br><br>
+        <input type="button" value="Submit" onClick="quizResults(this.form)">
+      </form>
     </div>
     `
+}
+
+function quizResults(form) {
+    var input = form.score.value;
+    alert("Your score of " + input + " has been recorded")
+}
+
+function timeChange() {
+    initialTime = initialTime - 10
 }
 
 function setTime() {
