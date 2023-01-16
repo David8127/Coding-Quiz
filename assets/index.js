@@ -1,10 +1,10 @@
 var quiz = document.getElementById("quiz");
-var initialTime = 60;
 var time = document.getElementById("time");
+var initialTime = 60;
 
 var questions = [
     {
-        title: ' Which of the items in this array has an index value of 1?\nvar westeros = ["Harrenhall", "Dragonstone", "Winterfell", "Lannisport", "Highgarden", "Yronwood"]',
+        title: 'Which of the items in this array has an index value of 1? <code>var westeros = ["Harrenhall", "Dragonstone", "Winterfell", "Lannisport", "Highgarden", "Yronwood"]</code>',
         answers: [
             {
                 answer: 'Harrenhall',
@@ -46,8 +46,12 @@ var questions = [
         ]
     },
     {
-        title: 'If you run ``console.log("5" + "6")`` , what will the result be?',
+        title: 'If you run `<code>console.log("5" + "6")</code>` , what will the result be?',
         answers: [
+            {
+                answer: '56',
+                correct: true
+            },
             {
                 answer: '11',
                 correct: false
@@ -57,17 +61,34 @@ var questions = [
                 correct: false
             },
             {
-                answer: '56',
-                correct: true
-            },
-            {
                 answer: ' "5"+"6" ',
                 correct: false
             },
         ]
     },
     {
-        title: 'Which of the following is NOT a keyword used to declare a variable?',
+        title: 'What are the correct brackets to use when defining an array?',
+        answers: [
+            {
+                answer: '[ ]',
+                correct: true
+            },
+            {
+                answer: '{ }',
+                correct: false
+            },
+            {
+                answer: '( )',
+                correct: false
+            },
+            {
+                answer: '/ /',
+                correct: false
+            },
+        ]
+    },
+    {
+        title: 'Which of the following is a keyword tha can be used to declare a variable?',
         answers: [
             {
                 answer: 'var',
@@ -78,16 +99,15 @@ var questions = [
                 correct: false
             },
             {
-                answer: 'obj',
-                correct: true
-            },
-            {
                 answer: 'let',
                 correct: false
             },
+            {
+                answer: 'all of the above',
+                correct: true
+            },
         ]
-    },
-
+    }
 ]
 
 
@@ -114,8 +134,6 @@ function homePage() {
             setTime()
             questionPage(questions[currentQuestion])
         })
-        // document.addEventListener('click', setTime())
-        // document.addEventListener('click', questionPage(questions[currentQuestion]))
 }
 
 function questionPage(question) {
@@ -124,38 +142,99 @@ function questionPage(question) {
         ${question.title}
     </p>
     <ul>
-        <li><button id="answerOne">${question.answers[0].answer}</button></li>
+        <li><button id="answerOne" data-correct="${question.answers[0].correct}">${question.answers[0].answer}</button></li>
         <li><button id="answerTwo" data-correct="${question.answers[1].correct}">${question.answers[1].answer}</button></li>
-        <li><button id="answerThree">${question.answers[2].answer}</button></li>
-        <li><button id="answerFour">${question.answers[3].answer}</button></li>
+        <li><button id="answerThree" data-correct="${question.answers[2].correct}">${question.answers[2].answer}</button></li>
+        <li><button id="answerFour" data-correct="${question.answers[3].correct}">${question.answers[3].answer}</button></li>
     </ul>
 
-    <div id="timer">Time left: <span id="time">0</span> seconds</div>
+    <p>Time Left:</p>
+    <div id="timer"><span id="time">0</span> seconds</div>
     `
-    document.getElementById("answerTwo")
-    document.addEventListener(
+
+    document
+    .getElementById("answerOne")
+    .addEventListener(
         'click',
         function (event) {
+            if(event.currentTarget.dataset.correct === 'true') {
+                alert ('nice work')
+            }else{
+                alert('false')
+                timeChange()
+            }
             currentQuestion++
             questionPage(questions[currentQuestion])
         }
     )
+
+    document
+    .getElementById("answerTwo")
+    .addEventListener(
+        'click',
+        function (event) {
+            if(event.currentTarget.dataset.correct === 'true') {
+                alert ('nice work')
+            }else{
+                alert('false')
+                timeChange()
+            }
+            currentQuestion++
+            questionPage(questions[currentQuestion])
+        }
+    )
+
+    document
+    .getElementById("answerThree")
+    .addEventListener(
+        'click',
+        function (event) {
+            if(event.currentTarget.dataset.correct === 'true') {
+                alert ('nice work')
+            }else{
+                alert('false')
+                timeChange()
+            }
+            currentQuestion++
+            questionPage(questions[currentQuestion])
+        }
+    )
+
+    document
+    .getElementById("answerFour")
+    .addEventListener(
+        'click',
+        function (event) {
+            if(event.currentTarget.dataset.correct === 'true') {
+                alert ('nice work')
+            }else{
+                alert('false')
+                timeChange()
+            }
+            currentQuestion++
+            questionPage(questions[currentQuestion])
+        }
+    )
+
 }
 
-//document
-//.getelementByClassName('choice')
-//.addEventListener (
-// 'click',
-//     function () {
+function timeChange() {
+    initialTime = initialTime - 10
+}
 
-//     }
-// )
-
-//give ID for whichever is the correct answer this.value = choice, then say go to next question, then subtract from time. 
-
-// function timeChange() {
-//     initialTime = initialTime - 15
-// }
+function highScore() {
+    quiz.innerHTML = /*html*/ `
+    <header>
+        <h1></h1>
+    </header>
+    <div class="container">
+        <div>
+            <h2>Ready to test your JavaScript skills?</h2>
+        </div>
+        <button id="startQuiz">Start Quiz!</button>
+    </div>
+    `
+}
 
 function setTime() {
     // Sets interval in variable
