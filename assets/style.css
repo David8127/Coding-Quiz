@@ -1,16 +1,44 @@
 body {
-    background-color: rgb(169, 255, 130);
+    background-color: rgb(134, 228, 231);
 }
 
 header {
     text-align: center;
-    padding: 2%;
+    margin: 2%;
+}
+
+#quiz{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(143, 248, 149);
+    margin: 150px 100px;
+    padding: 10px;
+    border: 5px solid rgb(53, 27, 196);
 }
 
 .container {
-    margin: 10;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    padding: 10px;
+}
+
+#startQuiz{
+    margin: 10px;
+}
+
+h3,
+p,
+ul,
+#timer,
+#time {
+    padding: 2px 10px;
+    justify-self: center;
 }
 
 li {
-    padding: 2px 10px;
+    padding: 10px 20px;
 }

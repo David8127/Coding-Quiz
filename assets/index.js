@@ -2,6 +2,7 @@ var quiz = document.getElementById("quiz");
 var time = document.getElementById("time");
 var initialTime = 60;
 
+//my array of questions
 var questions = [
     {
         title: 'Which of the items in this array has an index value of 1?\n<code>var westeros = ["Harrenhall", "Dragonstone", "Winterfell", "Lannisport", "Highgarden", "Yronwood"]</code>',
@@ -88,7 +89,7 @@ var questions = [
         ]
     },
     {
-        title: 'Which of the following is a keyword tha can be used to declare a variable?',
+        title: 'Which of the following is a keyword that can be used to declare a variable?',
         answers: [
             {
                 answer: 'var',
@@ -110,8 +111,10 @@ var questions = [
     }
 ]
 
+//start quiz with the first question in the array
 var currentQuestion = 0;
 
+//renders first page of quiz
 function homePage() {
     quiz.innerHTML = /*html*/ `
     <header>
@@ -134,11 +137,12 @@ function homePage() {
             })
 }
 
+//function to render quiz questions
 function questionPage(question) {
     quiz.innerHTML = /*html*/`
-    <P>
+    <h3>
         ${question.title}
-    </p>
+    </h3>
     <ul>
         <li><button id="answerOne" data-correct="${question.answers[0].correct}">${question.answers[0].answer}</button></li>
         <li><button id="answerTwo" data-correct="${question.answers[1].correct}">${question.answers[1].answer}</button></li>
@@ -156,9 +160,9 @@ function questionPage(question) {
             'click',
             function (event) {
                 if (event.currentTarget.dataset.correct === 'true') {
-                    alert('nice work')
+                    alert('Correct!')
                 } else {
-                    alert('false')
+                    alert('wrong')
                     timeChange()
                 }
                 currentQuestion++
@@ -175,9 +179,9 @@ function questionPage(question) {
             'click',
             function (event) {
                 if (event.currentTarget.dataset.correct === 'true') {
-                    alert('nice work')
+                    alert('Correct!')
                 } else {
-                    alert('false')
+                    alert('wrong')
                     timeChange()
                 }
                 currentQuestion++
@@ -194,9 +198,9 @@ function questionPage(question) {
             'click',
             function (event) {
                 if (event.currentTarget.dataset.correct === 'true') {
-                    alert('nice work')
+                    alert('Correct!')
                 } else {
-                    alert('false')
+                    alert('wrong')
                     timeChange()
                 }
                 currentQuestion++
@@ -213,9 +217,9 @@ function questionPage(question) {
             'click',
             function (event) {
                 if (event.currentTarget.dataset.correct === 'true') {
-                    alert('nice work')
+                    alert('Correct!')
                 } else {
-                    alert('false')
+                    alert('wrong')
                     timeChange()
                 }
                 currentQuestion++
@@ -228,6 +232,7 @@ function questionPage(question) {
 
 }
 
+//renders page with a form for user to input name and score
 function highScore() {
     quiz.innerHTML = /*html*/ `
     <header>
@@ -250,6 +255,7 @@ function quizResults(form) {
     alert("Your score of " + input + " has been recorded")
 }
 
+//takes 10 seconds off of time left if the wrong asnwer is selected
 function timeChange() {
     initialTime = initialTime - 10
 }
@@ -261,7 +267,8 @@ function setTime() {
         timer.textContent = initialTime;
 
         if (initialTime === 0) {
-            clearInterval(timerInterval);
+            clearInterval(timerInterval)
+            return highScore()
         }
 
     }, 1000);
