@@ -18,5 +18,5 @@ The following pictures show the application functionality and format:
 
 ## Link to deployed application
 
-This Challenge is graded based on the following criteria: 
+https://david8127.github.io/Coding-Quiz/
 
