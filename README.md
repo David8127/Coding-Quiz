@@ -12,9 +12,9 @@ N/A
 
 The following pictures show the application functionality and format:
 
-![Main display page of the quiz](./Assets/pictures/quizMain.JPG)
+![Main display page of the quiz](./assets/pictures/quizMain.JPG)
 ![quiz question that shows timer countdown.](./assets/pictures/quizQuestion.JPG)
-![Highscore page.](./Assets/pictures/quizScore.JPG)
+![Highscore page.](./assets/pictures/quizScore.JPG)
 
 ## Link to deployed application
 
